@@ -35,10 +35,10 @@ public class OrganizationTEST extends BaseTest {
         assertThat(json.getString("displayName")).isNotEmpty().isEqualTo("new name organization");
 
         //checking the field desc  is correct and not empty
-        assertThat(json.getString("desc")).isNotEmpty().isEqualTo("the description for the organizations");
+        assertThat(json.getString("desc")).isEqualTo("the description for the organizations");
 
         //checking the field name , have a string with a length of at least 3 and not empty
-        assertThat(json.getString("name")).isNotEmpty().hasSizeGreaterThan(3);
+        assertThat(json.getString("name")).isNotEmpty().hasSizeGreaterThanOrEqualTo(3);
 
         //checking the field name , have Only lowercase letter and contains have number and underscores
 
@@ -52,6 +52,7 @@ public class OrganizationTEST extends BaseTest {
         assertThat(json.getString("website")).doesNotContain(".com");
 
         String organizationID = json.getString("id");
+
         given()
                 .pathParam("boardId", organizationID)
                 .spec(reqSpec)
