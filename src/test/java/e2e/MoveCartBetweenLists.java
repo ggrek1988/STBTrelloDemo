@@ -1,4 +1,5 @@
 package e2e;
+
 import base.BaseTest;
 import base.BaseTest.*;
 import io.restassured.builder.RequestSpecBuilder;
@@ -34,7 +35,7 @@ public class MoveCartBetweenLists extends BaseTest {
                 .queryParam("name", "RestAssured")
                 .spec(reqSpec)
                 .when()
-                .post(BASE_URL+"/"+BOARDS)
+                .post(BASE_URL + "/" + BOARDS)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
@@ -53,13 +54,13 @@ public class MoveCartBetweenLists extends BaseTest {
 
     @Test
     @Order(2)
-    public void CreateNewLists(){
+    public void CreateNewLists() {
         Response response = given()
                 .queryParam("name", "First List")
                 .queryParam("idBoard", boardId)
                 .spec(reqSpec)
                 .when()
-                .post(BASE_URL+"/"+LISTS)
+                .post(BASE_URL + "/" + LISTS)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
@@ -73,13 +74,13 @@ public class MoveCartBetweenLists extends BaseTest {
 
     @Test
     @Order(3)
-    public void CreateSecondLists(){
+    public void CreateSecondLists() {
         Response response = given()
                 .queryParam("name", "Second List")
                 .queryParam("idBoard", boardId)
                 .spec(reqSpec)
                 .when()
-                .post(BASE_URL+"/"+LISTS)
+                .post(BASE_URL + "/" + LISTS)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .extract()

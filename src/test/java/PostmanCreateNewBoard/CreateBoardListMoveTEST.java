@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.*;
 
@@ -114,6 +116,7 @@ public class CreateBoardListMoveTEST extends BaseTest {
                 .response();
 
         JsonPath json = response.jsonPath();
+        //List<String> json1 = json.getList("name");
         assertThat(json.getString("idList")).isEqualTo(secondListId);
 
         //delete board
